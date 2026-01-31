@@ -1,72 +1,133 @@
-# Emotion detection using deep learning
+😊 Emotion Detection Using Deep Learning
 
-## Introduction
+GitHub: https://github.com/sunkireddy-Barath
 
-This project aims to classify the emotion on a person's face into one of **seven categories**, using deep convolutional neural networks. The model is trained on the **FER-2013** dataset which was published on International Conference on Machine Learning (ICML). This dataset consists of 35887 grayscale, 48x48 sized face images with **seven emotions** - angry, disgusted, fearful, happy, neutral, sad and surprised.
+Introduction
 
-## Dependencies
+This project implements a facial emotion detection system using deep learning.
+The goal is to identify a person’s emotional state from facial expressions in images or real-time webcam input.
 
-* Python 3, [OpenCV](https://opencv.org/), [Tensorflow](https://www.tensorflow.org/)
-* To install the required packages, run `pip install -r requirements.txt`.
+The system classifies emotions into seven categories:
 
-## Basic Usage
+Angry
 
-The repository is currently compatible with `tensorflow-2.0` and makes use of the Keras API using the `tensorflow.keras` library.
+Disgust
 
-* First, clone the repository and enter the folder
+Fear
 
-```bash
-git clone https://github.com/atulapra/Emotion-detection.git
-cd Emotion-detection
-```
+Happy
 
-* Download the FER-2013 dataset inside the `src` folder.
+Neutral
 
-* If you want to train this model, use:  
+Sad
 
-```bash
+Surprise
+
+The model is trained using the FER-2013 dataset, which consists of grayscale facial images of size 48×48 pixels.
+Emotion detection plays an important role in applications such as smart classrooms, attendance systems, human–computer interaction, and surveillance systems.
+
+Dependencies
+
+The following tools and libraries are required to run this project:
+
+Python 3
+
+OpenCV
+
+TensorFlow (Keras API)
+
+All dependencies can be installed using the provided requirements.txt file.
+
+Basic Usage
+
+This project is developed using TensorFlow 2.x and the Keras deep learning framework.
+
+Step 1: Clone My Repository
+git clone https://github.com/sunkireddy-Barath/Emotion-Detection.git
+cd Emotion-Detection
+
+
+(Replace the repository name if your folder name is different)
+
+Step 2: Dataset Setup
+
+Download the FER-2013 dataset and place it inside the src directory.
+
+Step 3: Train the Model
+
+To train the emotion detection model:
+
 cd src
 python emotions.py --mode train
-```
 
-* If you want to view the predictions without training again, you can download the pre-trained model from [here](https://drive.google.com/file/d/1FUn0XNOzf-nQV7QjbBPA6-8GLoHNNgv-/view?usp=sharing) and then run:  
+Step 4: Run Emotion Detection
 
-```bash
+To run emotion detection using the trained or saved model:
+
 cd src
 python emotions.py --mode display
-```
 
-* The folder structure is of the form:  
-  src:
-  * data (folder)
-  * `emotions.py` (file)
-  * `haarcascade_frontalface_default.xml` (file)
-  * `model.h5` (file)
 
-* This implementation by default detects emotions on all faces in the webcam feed. With a simple 4-layer CNN, the test accuracy reached 63.2% in 50 epochs.
+The system will open the webcam, detect faces, and display the predicted emotion for each detected face.
 
-![Accuracy plot](imgs/accuracy.png)
+Project Structure
 
-## Data Preparation (optional)
+The project directory is organized as follows:
 
-* The [original FER2013 dataset in Kaggle](https://www.kaggle.com/deadskull7/fer2013) is available as a single csv file. I had converted into a dataset of images in the PNG format for training/testing.
+src/data/ – Emotion dataset
 
-* In case you are looking to experiment with new datasets, you may have to deal with data in the csv format. I have provided the code I wrote for data preprocessing in the `dataset_prepare.py` file which can be used for reference.
+emotions.py – Main script for training and emotion prediction
 
-## Algorithm
+haarcascade_frontalface_default.xml – Face detection model
 
-* First, the **haar cascade** method is used to detect faces in each frame of the webcam feed.
+model.h5 – Trained CNN emotion detection model
 
-* The region of image containing the face is resized to **48x48** and is passed as input to the CNN.
+Model Performance
 
-* The network outputs a list of **softmax scores** for the seven classes of emotions.
+Uses a 4-layer Convolutional Neural Network (CNN)
 
-* The emotion with maximum score is displayed on the screen.
+Achieves around 63% accuracy after 50 training epochs
 
-## References
+Designed to be lightweight and suitable for real-time emotion detection
 
-* "Challenges in Representation Learning: A report on three machine learning contests." I Goodfellow, D Erhan, PL Carrier, A Courville, M Mirza, B
-   Hamner, W Cukierski, Y Tang, DH Lee, Y Zhou, C Ramaiah, F Feng, R Li,  
-   X Wang, D Athanasakis, J Shawe-Taylor, M Milakov, J Park, R Ionescu,
-   M Popescu, C Grozea, J Bergstra, J Xie, L Romaszko, B Xu, Z Chuang, and
-   Y. Bengio. arXiv 2013.
+Data Preparation (Optional)
+
+The original FER-2013 dataset is provided as a CSV file.
+For easier processing, the dataset is converted into image format (PNG).
+
+A helper script is included to:
+
+Convert CSV data into images
+
+Separate training and testing data
+
+This allows experimentation with custom datasets in the future.
+
+Algorithm Explanation
+
+Faces are detected from the webcam using Haar Cascade Classifier
+
+The detected face region is resized to 48×48 pixels
+
+The image is passed to the CNN model
+
+The model outputs probability scores for each emotion
+
+The emotion with the highest probability is displayed on the screen
+
+Technologies Used
+
+Python
+
+OpenCV
+
+TensorFlow / Keras
+
+Haar Cascade Face Detection
+
+Convolutional Neural Networks (CNN)
+
+Conclusion
+
+This project demonstrates the use of deep learning for real-time facial emotion recognition.
+It serves as a strong base for integrating emotion detection into larger systems such as attendance monitoring, student behavior analysis, and intelligent surveillance applications.
