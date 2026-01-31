@@ -1,6 +1,5 @@
 🚀 Machine Learning & Computer Vision Projects
 
-Author: Sunkireddy Barath
 
 This repository contains a collection of six machine learning and computer vision projects developed using Python.
 Each project focuses on a real-world problem and demonstrates the use of deep learning, computer vision, and data processing techniques.
