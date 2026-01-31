@@ -1,128 +1,127 @@
-# Drowsiness Detection System
+Drowsiness Detection System
 
-![image](https://github.com/user-attachments/assets/81ab2ce9-94ed-479b-bb76-d289c99800fc)
-![image](https://github.com/user-attachments/assets/0615e219-f623-47ff-9448-946a9c273500)
-![image](https://github.com/user-attachments/assets/b25705ed-d976-45a3-a080-fe1e12f220fd)
+GitHub: https://github.com/sunkireddy-Barath
 
-## Overview
+Overview
 
-The **Drowsiness Detection System** is a project designed to monitor a person's alertness in real-time by analyzing facial features.  
-By utilizing computer vision and machine learning techniques, the system aims to detect signs of drowsiness and provide timely alerts — particularly useful for applications like driver monitoring.
+The Drowsiness Detection System is a computer vision–based project developed to monitor a person’s alertness in real time.
+The system analyzes facial features such as eye closure and yawning to detect signs of drowsiness and provide timely alerts.
 
-This repository focuses on illustrating the full development process, including data capture, auto-labeling, model training, and detection pipeline integration.
+This project is especially useful for driver monitoring systems, where detecting drowsiness early can help reduce accidents.
+The repository demonstrates the complete development workflow, including data collection, automatic labeling, model training, and real-time detection.
 
----
+Features
 
-## Features
+Real-time Monitoring: Works with webcam or video input
 
-- **Real-time Monitoring**: Detects signs of drowsiness using a webcam or video input.
-- **Dual Model Detection**: Separate YOLOv8 models for eye closure detection and yawning detection.
-- **Facial Landmarks Analysis**: Tracks eye status, head position, and mouth movements.
-- **Data Capture Pipeline**: Tools to collect and organize custom datasets.
-- **Auto Labeling with GroundingDINO**: Automated bounding box generation.
-- **User Interface**: Built with PyQt5 for real-time visualization and alerts.
+Drowsiness Detection: Identifies eye closure and yawning patterns
 
----
+Dual Model Approach: Separate models for eye state and yawning detection
 
-## Key Files
+Custom Dataset Support: Allows collecting and training on personal datasets
 
-- `AutoLabelling.py`: Script for automated bounding box labeling using GroundingDINO.
-- `CaptureData.py`: Records and logs video data for analysis or training.
-- `DrowsinessDetector.py`: Core detection script integrating real-time inference and alerts.
-- `LoadData.ipynb`: Loads and preprocesses datasets.
-- `RedirectData.ipynb`: Organizes and redirects captured data for training.
-- `train.ipynb`: Notebook for training the YOLO models.
+Auto Labeling: Reduces manual work using automated bounding box generation
 
----
+Live Visualization: Displays detection results and alerts in real time
 
-## Installation
+Project Structure
 
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/tyrerodr/Real_time_drowsy_driving_detection.git
-    cd Real_time_drowsy_driving_detection
-    ```
+AutoLabelling.py – Automatically generates bounding boxes for training data
 
-2. **Create a virtual environment:**
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
+CaptureData.py – Captures video frames for building custom datasets
 
-3. **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+DrowsinessDetector.py – Main script for real-time detection and alerts
 
-4. **Run the detection system:**
-    ```bash
-    python DrowsinessDetector.py
-    ```
+LoadData.ipynb – Loads and preprocesses datasets
 
----
+RedirectData.ipynb – Organizes collected data into training format
 
-## Usage
+train.ipynb – Trains the drowsiness detection models
 
-- **Real-Time Detection:** Run `DrowsinessDetector.py` with a connected webcam to monitor drowsiness.
-- **Data Capture:** Use `CaptureData.py` to collect video frames for training or testing.
-- **Training New Models:** Use `train.ipynb` to retrain the models on your custom datasets.
+Installation
+Clone the Repository
+git clone https://github.com/tyrerodr/Real_time_drowsy_driving_detection.git
+cd Real_time_drowsy_driving_detection
 
----
+Create and Activate Virtual Environment
+python -m venv venv
 
-## How It Works
 
-The system uses two separate YOLOv8 models:
+Windows
 
-1. **Eye Detection Model:**
-   - Classifies eyes as open or closed.
-   - Trained on public datasets:
-     - [Eyes Dataset](https://www.kaggle.com/datasets/charunisa/eyes-dataset/code)
-     - [MRL Eye Dataset](https://www.kaggle.com/datasets/tauilabdelilah/mrl-eye-dataset)
-   - ~53,000 images for training, ~3,000 images for validation.
+venv\Scripts\activate
 
-2. **Yawning Detection Model:**
-   - Detects yawning (mouth open) vs not yawning (mouth closed).
-   - Trained on:
-     - [Yawning Dataset](https://www.kaggle.com/datasets/deepankarvarma/yawning-dataset-classification?select=yawn)
 
-**Auto Labeling:**  
-GroundingDINO was used to generate bounding boxes for YOLO training to improve dataset quality.
+Linux / macOS
 
-Once trained, the models' predictions are combined with confidence thresholds and visualized in a PyQt5 GUI.
+source venv/bin/activate
 
----
+Install Dependencies
+pip install -r requirements.txt
 
-## Technologies Used
+How to Run
 
-- **Python**
-- **YOLOv8** – Object detection framework.
-- **OpenCV** – Computer vision tasks.
-- **GroundingDINO** – Auto-labeling tool.
-- **TensorFlow / Keras** – Model training.
-- **PyQt5** – Graphical user interface.
+To start the real-time drowsiness detection system, run:
 
----
+python DrowsinessDetector.py
 
-## Important Note
+Usage
 
-This repository is intended primarily to showcase the development process of a drowsiness detection system — including data collection, model training, and real-time integration.
+Real-Time Detection: Run the main script with a connected webcam
 
-The uploaded model weights are **preliminary** and **not fully trained to convergence**.  
-They are mainly for demonstration purposes, and final production-ready models are maintained separately.
+Data Collection: Use CaptureData.py to collect images or video frames
 
-We appreciate any feedback and contributions to improve the system.
+Model Training: Retrain the models using train.ipynb with custom datasets
 
----
+How the System Works
 
-## Future Improvements
+The system uses two object detection models:
 
-- **Integration with Wearables:** Add heart rate or other vitals monitoring.
-- **Multi-Person Detection:** Extend detection to multiple subjects simultaneously.
-- **Mobile Deployment:** Create a mobile app version for real-time on-the-go monitoring.
+Eye State Detection
 
----
+Detects whether eyes are open or closed
 
-**Eng. Tyrone Eduardo Rodriguez Motato**  
-Computer Vision Engineer  
-Guayaquil, Ecuador  
-Email: tyrerodr@hotmail.com
+Helps identify prolonged eye closure, a key sign of drowsiness
+
+Yawning Detection
+
+Detects mouth open (yawning) or mouth closed
+
+Used as an additional indicator of fatigue
+
+Auto Labeling
+
+Automatic bounding box generation is used to prepare datasets
+
+Improves training efficiency and dataset quality
+
+The predictions from both models are combined and displayed in real time with visual indicators and alerts.
+
+Technologies Used
+
+Python
+
+YOLOv8
+
+OpenCV
+
+TensorFlow / Keras
+
+Auto-labeling tools
+
+PyQt5 (for visualization)
+
+Important Note
+
+This project is developed for academic and learning purposes to demonstrate the complete pipeline of a drowsiness detection system.
+The provided model weights are for demonstration only and are not fully optimized for production use.
+
+Future Enhancements
+
+Support for multiple person detection
+
+Integration with wearable sensors
+
+Mobile application deployment
+
+Improved accuracy with larger and more diverse datasets
